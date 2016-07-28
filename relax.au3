@@ -2,7 +2,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Res_Comment=By MBK for foxnet group
 #AutoIt3Wrapper_Res_Description=auto extractor by MBK
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.18
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.21
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_LegalCopyright=(C) 2016. freeware
 #AutoIt3Wrapper_Res_Language=1033
@@ -17,28 +17,23 @@
 #include <Debug.au3>
 
 
-;-----------debg---------------
-_DebugSetup("Relax project Debug log :")
+	;-----------debg---------------
+	;	_DebugSetup("Relax project Debug log :")
+	;-----------debg---------------
 
 
-;If ProcessExists("relax.com") Then ; Check if the relax process is running.
- ;   MsgBox($MB_SYSTEMMODAL, "", "Relax alrady running.")
-;	 ProcessClose("relax.com")
-;EndIf
-TraySetIcon("shell32.dll", 47) ;
-getini()
-
-
-dim $startin1,$startin2,$startin3,$FilePathUbix,$FilePathClient
-		;msgbox (0,$FilePathClient,$FilePathUbix,5)
-
+	TraySetIcon("shell32.dll", 47) ;
+	dim $startin1,$startin2,$startin3,$FilePathUbix,$FilePathClient
 
 
 while 1
 		main()
 		Sleep ( 1000)
-
 WEnd
+
+
+
+
 
 
 
@@ -62,7 +57,7 @@ func main()
 						 $FileSizeClient = FileGetSize ( $FilePathClient & "*.ts")
 
 
-						DirCreate (@ScriptDir & "\ts")
+						DirCreate (@ScriptDir &   $FilePathClient  )
 						sleep (1000)
 
 					;	_DebugOut ($FilePathUbix)
@@ -84,7 +79,7 @@ func main()
 						msgbox ( 0, "Copy status ... " , "All file(s) copied. ",2)
 						;dircopy("d:\tst\", "d:\relax\" , $FC_OVERWRITE + $FC_CREATEPATH)
 						 $desfile = _DateFormat($Date, "yyyy-MM-dd")
-						 $CMD = @ScriptDir & "\extract.exe " & @ScriptDir & "\vid\" & $desfile & " /ts  " &  @ScriptDir & "\ts "
+						 $CMD = @ScriptDir & "\extract.exe " & @ScriptDir & "\vid\" & $desfile & " /ts  " &  @ScriptDir & $FilePathClient
 						; $CMD = "dir " & "e:"
 
 							 RunWait("cmd" & " /c " & $CMD)
