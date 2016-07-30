@@ -2,7 +2,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Res_Comment=By MBK for foxnet group
 #AutoIt3Wrapper_Res_Description=auto extractor by MBK
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.24
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.25
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_LegalCopyright=(C) 2016. freeware
 #AutoIt3Wrapper_Res_Language=1033
@@ -53,7 +53,7 @@ func main()
 
 							;msgbox (0,0,$mytime,1)
 
-						MsgBox(64, "Welcome to tooshe automation script", "This program will copy and convert media to shared folder on net. Your script dir detected on "& @ScriptDir,3)
+						MsgBox(64, "Welcome to RELAX.", "This program will copy and convert TOOSHEH DATA to shared folder on network.RELAX Running at this location :  "& @ScriptDir,3)
 
 						 ;$FilePathUbix = "\\192.168.10.253\rec\share_auto\Toosheh TV\*.ts"
 						 ; $FilePathClient = @ScriptDir & "\ts\"
@@ -80,7 +80,7 @@ func main()
 								;;;;sleep (50)
 								;;;;wend
 
-						msgbox ( 0, "Copy status ... " , "All file(s) copied. ",2)
+						msgbox ( 0, "Copy status ... " , "All file(s) copied to client successfully. ",2)
 						;dircopy("d:\tst\", "d:\relax\" , $FC_OVERWRITE + $FC_CREATEPATH)
 						 $desfile = _DateFormat($Date, "yyyy-MM-dd")
 						 $CMD = @ScriptDir & "\extract.exe " & @ScriptDir & $FilePathClientOut & $desfile & " /ts  " &  @ScriptDir & $FilePathClient
@@ -88,8 +88,7 @@ func main()
 
 							 RunWait("cmd" & " /c " & $CMD)
 
-						;msgbox (0,0, @ScriptDir & "\vid\" & $desfile & "\Toosheh\فیلترشکن",2)
-
+						 
 			;  Remove folders  ==============================================================================================================
 
 								DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath1,1)
@@ -99,7 +98,7 @@ func main()
 								DirRemove (@ScriptDir & $FilePathClientOut & $desfile & $removepath5,1)
 
 								FileDelete (@ScriptDir & $FilePathClient)
-						msgbox ( 64,"Inform",".TS file deleting ...,Operational successfuly completed.",3)
+						msgbox ( 64,"RELAX Inform",".TS file deleting ..., Operational successfully completed.",3)
 
 						$mytime = _NowTime(4)          ; set new system time after do all operations to avoid loop again till clock set next day
 
@@ -107,8 +106,8 @@ func main()
 
 
 
-		TrayTip("Relax Inform", "Time missed.Program run at background.wait for proper time...", 0, $TIP_ICONASTERISK)
-		sleep (10000)
+		TrayTip("RELAX Inform", "Time missed.Program runing at background yet.It waits for proper time...", 0, $TIP_ICONASTERISK)
+		sleep (15000)
 
 EndFunc
 
