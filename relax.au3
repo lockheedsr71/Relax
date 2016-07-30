@@ -2,7 +2,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Res_Comment=By MBK for foxnet group
 #AutoIt3Wrapper_Res_Description=auto extractor by MBK
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.25
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.26
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_LegalCopyright=(C) 2016. freeware
 #AutoIt3Wrapper_Res_Language=1033
@@ -53,7 +53,7 @@ func main()
 
 							;msgbox (0,0,$mytime,1)
 
-						MsgBox(64, "Welcome to RELAX.", "This program will copy and convert TOOSHEH DATA to shared folder on network.RELAX Running at this location :  "& @ScriptDir,3)
+						MsgBox(64, "Welcome to RELAX.", "This program will copy and convert TOOSHEH TV DATA and Media to shared folder on network share path.RELAX Running at this location :  "& @ScriptDir,3)
 
 						 ;$FilePathUbix = "\\192.168.10.253\rec\share_auto\Toosheh TV\*.ts"
 						 ; $FilePathClient = @ScriptDir & "\ts\"
@@ -88,7 +88,7 @@ func main()
 
 							 RunWait("cmd" & " /c " & $CMD)
 
-						 
+
 			;  Remove folders  ==============================================================================================================
 
 								DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath1,1)
@@ -137,30 +137,26 @@ Func getini()
     Local Const $sFilePath = @ScriptDir & "\vars.ini"
 
 
-    ; Read the INI file for the value of 'Title' in the section labelled 'General'.
-		 global $startin1,$startin2,$startin3,$FilePathUbix,$FilePathClient,$FilePathClientOut,$removepath1,$removepath2,$removepath3,$removepath4,$removepath5
-			;read start times
-		  $startin1 = IniRead($sFilePath, "time", "startin1",0)
-		  $startin2 = IniRead($sFilePath, "time", "startin2",0)
-		  $startin3 = IniRead($sFilePath, "time", "startin3",0)
-
-		 	  ; Read paths
-		   $FilePathUbix = IniRead($sFilePath, "path", "FilePathUbix",0)
-		   $FilePathClient = IniRead($sFilePath, "path", "FilePathClient",0)
-		   $FilePathClientOut = IniRead($sFilePath, "path", "FilePathClientOut",0)
-
-
-
-		   ;read removing files
-
-			$removepath1 = IniRead($sFilePath, "remove", "path1",0)
-			$removepath2 = IniRead($sFilePath, "remove", "path2",0)
-			$removepath3 = IniRead($sFilePath, "remove", "path3",0)
-			$removepath4 = IniRead($sFilePath, "remove", "path4",0)
-			$removepath5 = IniRead($sFilePath, "remove", "path5",0)
+			   ; Read the INI file for the value of 'Title' in the section labelled 'General'.
+				 global $startin1,$startin2,$startin3,$FilePathUbix,$FilePathClient,$FilePathClientOut,$removepath1,$removepath2,$removepath3,$removepath4,$removepath5
+					;read start times
+				  $startin1 = IniRead($sFilePath, "time", "startin1",0)
+				  $startin2 = IniRead($sFilePath, "time", "startin2",0)
+				  $startin3 = IniRead($sFilePath, "time", "startin3",0)
+    		   ; Read paths
+				   $FilePathUbix = IniRead($sFilePath, "path", "FilePathUbix",0)
+				   $FilePathClient = IniRead($sFilePath, "path", "FilePathClient",0)
+				   $FilePathClientOut = IniRead($sFilePath, "path", "FilePathClientOut",0)
 
 
 
+		       ;read removing files
+
+					$removepath1 = IniRead($sFilePath, "remove", "path1",0)
+					$removepath2 = IniRead($sFilePath, "remove", "path2",0)
+					$removepath3 = IniRead($sFilePath, "remove", "path3",0)
+					$removepath4 = IniRead($sFilePath, "remove", "path4",0)
+					$removepath5 = IniRead($sFilePath, "remove", "path5",0)
 
 		; Display the value returned by IniRead.
 		; IniWrite($sFilePath, "mytest", "var3", "meghdar30000")
