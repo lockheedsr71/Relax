@@ -17,13 +17,12 @@
 #include <Debug.au3>
 
 
-	;-----------debg---------------
-		_DebugSetup("Relax project Debug log :")
-	;-----------debg---------------
-
-
+			;-----------debg---------------
+				_DebugSetup("Relax project Debug log :")
+			;-----------debg---------------
 	TraySetIcon("shell32.dll", 47) ;
-	dim $startin1,$startin2,$startin3,$FilePathUbix,$FilePathClient,$FilePathClientOut,$removepath1,$removepath2,$removepath3,$removepath4,$removepath5
+	
+			dim $startin1,$startin2,$startin3,$FilePathUbix,$FilePathClient,$FilePathClientOut,$removepath1,$removepath2,$removepath3,$removepath4,$removepath5
 
 
 
