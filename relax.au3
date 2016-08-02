@@ -2,7 +2,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Res_Comment=By MBK for foxnet group
 #AutoIt3Wrapper_Res_Description=auto extractor by MBK
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.26
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.27
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_LegalCopyright=(C) 2016. freeware
 #AutoIt3Wrapper_Res_Language=1033
@@ -18,10 +18,11 @@
 
 
 			;-----------debg---------------
-				_DebugSetup("Relax project Debug log :")
+	;			_DebugSetup("Relax project Debug log :")
 			;-----------debg---------------
+
 	TraySetIcon("shell32.dll", 47) ;
-	
+
 			dim $startin1,$startin2,$startin3,$FilePathUbix,$FilePathClient,$FilePathClientOut,$removepath1,$removepath2,$removepath3,$removepath4,$removepath5
 
 
@@ -156,6 +157,14 @@ Func getini()
 					$removepath3 = IniRead($sFilePath, "remove", "path3",0)
 					$removepath4 = IniRead($sFilePath, "remove", "path4",0)
 					$removepath5 = IniRead($sFilePath, "remove", "path5",0)
+
+					if $removepath1 = "" then $removepath1="0"
+					if $removepath2 = "" then $removepath2="0"
+					if $removepath3 = "" then $removepath3="0"
+					if $removepath4 = "" then $removepath4="0"
+					if $removepath5 = "" then $removepath5="0"
+
+
 
 		; Display the value returned by IniRead.
 		; IniWrite($sFilePath, "mytest", "var3", "meghdar30000")
