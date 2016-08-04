@@ -1,10 +1,9 @@
-
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Res_Comment=By MBK for foxnet group
-#AutoIt3Wrapper_Res_Description=auto extractor by MBK
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.29
+#AutoIt3Wrapper_Res_Comment=Created by MBK for foxnet group.
+#AutoIt3Wrapper_Res_Description=RELAX Project for TOOSHE TV Network.
+#AutoIt3Wrapper_Res_Fileversion=1.1.0.2
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
-#AutoIt3Wrapper_Res_LegalCopyright=(C) 2016. freeware
+#AutoIt3Wrapper_Res_LegalCopyright=(C) 2016.Under GNU General Public License.It is freeware program.
 #AutoIt3Wrapper_Res_Language=1033
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #include <MsgBoxConstants.au3>
@@ -15,10 +14,11 @@
 #include <WinAPIFiles.au3>
 #include <TrayConstants.au3>
 #include <Debug.au3>
+#include <File.au3>
 
 
 			;-----------debg---------------
-	;			_DebugSetup("Relax project Debug log :")
+	 		;	_DebugSetup("Relax project Debug log :")
 			;-----------debg---------------
 
 	TraySetIcon("shell32.dll", 47) ;
@@ -33,66 +33,65 @@ while 1
 WEnd
 
 
-
-
-
 	func main()
 					getini()
 					filechk ( "vars.ini")
 					filechk ( "extract.exe")
+					filechk ( "LisaCore.dll")
+					filechk ( "LisaExtractor.dll")
+					filechk ( "LisaExtractorApp.dll")
+
+		Local $Date = _NowDate()
+		$mytime = _NowTime(4)
+
+					while $mytime= $startin1 or $mytime=$startin2 or $mytime=$startin3       ; check only run in this time slice
+
+					beep(2000,300)
+
+				MsgBox(64, "Welcome to RELAX.", "This program will copy and convert TOOSHEH TV DATA and Media to shared folder on network share path.RELAX Running at this location :  "& @ScriptDir,3)
+
+									 $FileSizeUbix = FileGetSize ( $FilePathUbix)
+				 $FileSizeClient = FileGetSize ( $FilePathClient & "*.ts")
 
 
+				DirCreate (@ScriptDir &   $FilePathClient  )
+				sleep (1000)
+
+			;	_DebugOut ($FilePathUbix)
+			;	_DebugOut($FilePathClient)
 
 
-			Local $Date = _NowDate()
-			$mytime = _NowTime(4)
+				if FileExists($FilePathClient  & "*.ts" ) = 0  then  _FileCopy($FilePathUbix,@ScriptDir & $FilePathClient)
 
+				  $FileSizeUbix = FileGetSize ( $FilePathUbix )
+				  $FileSizeClient = FileGetSize ( $FilePathClient & "*.ts" )
 
-						while $mytime= $startin1 or $mytime=$startin2 or $mytime=$startin3       ; check only run in this time slice
+				   if $FileSizeClient = 0 then
+					   msgbox ( 48, "Copy status ... " , "No .TS file found in server to copy.",2)
+						else
+					   msgbox ( 64, "Copy status ... " , "All file(s) copied to client successfully. ",2)
+						endif
 
-							beep(2000,300)
+						$desfile = _DateFormat($Date, "yyyy-MM-dd")
+				 $CMD = @ScriptDir & "\extract.exe " & @ScriptDir & $FilePathClientOut & $desfile & " /ts  " &  @ScriptDir & $FilePathClient
 
-						MsgBox(64, "Welcome to RELAX.", "This program will copy and convert TOOSHEH TV DATA and Media to shared folder on network share path.RELAX Running at this location :  "& @ScriptDir,3)
+					 RunWait("cmd" & " /c " & $CMD)
 
-											 $FileSizeUbix = FileGetSize ( $FilePathUbix)
-						 $FileSizeClient = FileGetSize ( $FilePathClient & "*.ts")
+			;  Remove folders  ==============================================================================================================
+						DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath1,1)
+						DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath2,1)
+						DirRemove (@ScriptDir & $FilePathClientOut & $desfile & $removepath3,1)
+						DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath4,1)
+						DirRemove (@ScriptDir & $FilePathClientOut & $desfile & $removepath5,1)
+			;  Remove folders  ==============================================================================================================
+						FileDelete (@ScriptDir & $FilePathClient)
+							msgbox ( 64,"RELAX Inform",".TS file deleting ... , Operational successfully completed.",3)
+						$mytime = _NowTime(4)          ; set new system time after do all operations to avoid loop again till clock set next day
 
+					wend
 
-						DirCreate (@ScriptDir &   $FilePathClient  )
-						sleep (1000)
-
-					;	_DebugOut ($FilePathUbix)
-					;	_DebugOut($FilePathClient)
-
-
-						if FileExists($FilePathClient  & "*.ts" ) = 0  then  _FileCopy($FilePathUbix,@ScriptDir & $FilePathClient)
-
-						  $FileSizeUbix = FileGetSize ( $FilePathUbix )
-						  $FileSizeClient = FileGetSize ( $FilePathClient & "*.ts" )
-
-							msgbox ( 0, "Copy status ... " , "All file(s) copied to client successfully. ",2)
-
-						 $desfile = _DateFormat($Date, "yyyy-MM-dd")
-						 $CMD = @ScriptDir & "\extract.exe " & @ScriptDir & $FilePathClientOut & $desfile & " /ts  " &  @ScriptDir & $FilePathClient
-
-							 RunWait("cmd" & " /c " & $CMD)
-
-					;  Remove folders  ==============================================================================================================
-								DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath1,1)
-								DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath2,1)
-								DirRemove (@ScriptDir & $FilePathClientOut & $desfile & $removepath3,1)
-								DirRemove (@ScriptDir & $FilePathClientOut & $desfile &  $removepath4,1)
-								DirRemove (@ScriptDir & $FilePathClientOut & $desfile & $removepath5,1)
-					;  Remove folders  ==============================================================================================================
-								FileDelete (@ScriptDir & $FilePathClient)
-									msgbox ( 64,"RELAX Inform",".TS file deleting ..., Operational successfully completed.",3)
-
-								$mytime = _NowTime(4)          ; set new system time after do all operations to avoid loop again till clock set next day
-
-						wend
-
-		TrayTip("RELAX Inform", "Time missed.Program runing at background yet.It waits for proper time...", 0, $TIP_ICONASTERISK)
-		sleep (15000)
+				TrayTip("RELAX Inform", "Time missed.Program runing at background yet.It waits for proper time...", 0, $TIP_ICONASTERISK)
+				sleep (15000)
 
 EndFunc
 
