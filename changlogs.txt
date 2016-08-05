@@ -1,6 +1,6 @@
 #########################
-# Relax changelog file    	     		#			    										
-# Created by M.B.K				   		#			   	 
+# Relax changelog file    										
+# Created by M.B.K			   	 
 #########################
 
 
@@ -10,9 +10,8 @@
 ===============
 1.fix renovation bug to avoid remove all dirs if one path set null
 2.required file check before running to avoid from application crashes
-3.correct  changelog file.
+3.correct changelog file.
 4.checking for source .TS file before extracting
-
 
 
 
@@ -42,7 +41,7 @@
 ===============
 1.used vars.ini files for some variables config
 2.fix some bugs
-3.used better algorithm for file copy.(wait till copy completed and continue program)
+3.used better algorithm for file copy. (wait till copy completed and continue program)
 4.update extractor to new version
 
 
@@ -79,7 +78,7 @@
 1.0.0.4
 ===============
 1.make auto start and scheduled 
-2.some delays for less  cpu usage 
+2.some delays for less cpu usage 
 3.make some message to show user for background activity.
 4.add icon to systray .
 
