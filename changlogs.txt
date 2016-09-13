@@ -4,6 +4,12 @@
 #########################
 
 
+1.1.0.2
+===============
+1.fix running program twice or more  during a minute 
+2.update extractor librarys
+
+
 
 
 1.1.0.0
