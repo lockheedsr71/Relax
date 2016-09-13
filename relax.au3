@@ -1,7 +1,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Res_Comment=Created by MBK for foxnet group.
 #AutoIt3Wrapper_Res_Description=RELAX Project for TOOSHE TV Network.
-#AutoIt3Wrapper_Res_Fileversion=1.1.0.3
+#AutoIt3Wrapper_Res_Fileversion=1.1.0.2
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_LegalCopyright=(C) 2016.Under GNU General Public License.It is freeware program.
 #AutoIt3Wrapper_Res_Language=1033
