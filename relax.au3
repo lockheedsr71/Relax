@@ -1,7 +1,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Res_Comment=Created by MBK for foxnet group.
 #AutoIt3Wrapper_Res_Description=RELAX Project for TOOSHE TV Network.
-#AutoIt3Wrapper_Res_Fileversion=1.1.0.2
+#AutoIt3Wrapper_Res_Fileversion=1.1.0.3
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_LegalCopyright=(C) 2016.Under GNU General Public License.It is freeware program.
 #AutoIt3Wrapper_Res_Language=1033
@@ -43,6 +43,7 @@ WEnd
 
 		Local $Date = _NowDate()
 		$mytime = _NowTime(4)
+		Local $sFileVersion = FileGetVersion('relax.com')
 
 					while $mytime= $startin1 or $mytime=$startin2 or $mytime=$startin3       ; check only run in this time slice
 
@@ -91,7 +92,7 @@ WEnd
 
 					wend
 
-				TrayTip("RELAX Inform", "Time missed.Program runing at background yet.It waits for proper time...", 0, $TIP_ICONASTERISK)
+				TrayTip("RELAX " & $sFileVersion & " says: ", "Time missed.Program runing at background yet.It waits for proper time...", 0, $TIP_ICONASTERISK)
 				sleep (15000)
 
 EndFunc
@@ -164,7 +165,4 @@ func filechk($fname)
 EndIf
 
 EndFunc
-
-
-
 
